@@ -7,20 +7,23 @@ import { AppComponent } from './app.component';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DetailsComponent } from './details/details.component';
+import { UpdateFormComponent } from './update-form/update-form.component';
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationFormComponent,
     PageNotFoundComponent,
-    DetailsComponent
+    DetailsComponent,
+    UpdateFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
