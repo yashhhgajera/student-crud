@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-details',
@@ -6,10 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
+  
+  studentData:any = [];
 
-  constructor() { }
+  constructor(private router:Router, private data: DataService) { }
 
   ngOnInit(): void {
+    this.studentData = this.data.getData();
+  }
+
+  deleteData(index:number){
+    this.studentData.splice(index,1);
+    localStorage.setItem("studentdata",JSON.stringify(this.studentData));
+    alert("Are You Sure?");
+  }
+
+  updateData(index:number){
+    this.router.navigate(["/update",index]);
   }
 
 }

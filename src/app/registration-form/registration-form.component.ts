@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-registration-form',
@@ -8,19 +10,35 @@ import { NgForm } from '@angular/forms';
 })
 export class RegistrationFormComponent implements OnInit {
 
-  public email:string = "";
-  public password:string = "";
-  public address:string = "";
-  public city:string = "";
-  public state:string = "";
-  public zipcode:string = "";
+  email:string = "";
+  password:string = "";
+  address:string = "";
+  city:string = "";
+  state:number = 0;
+  zipcode:string = "";
+  updateId:number = 0;
+  studentData:any = [];
 
-  constructor() { }
+  constructor(private route:ActivatedRoute, private data: DataService) { }
 
   ngOnInit(): void {
+    this.studentData = this.data.getData();
   }
 
-  addStudentData(student: NgForm){
-    console.log(student.value);
+  addStudentData(formValue: NgForm){
+    if(formValue.valid!=false){
+      this.studentData.push(formValue.value)
+      localStorage.setItem("studentdata",JSON.stringify(this.studentData));
+      this.resetForm(formValue);
+    }
+    else{
+      alert("Fill the Value");
+    }
   }
+
+  resetForm(formValue: NgForm){
+    formValue.reset();
+  }
+
+
 }
