@@ -8,7 +8,7 @@ import { UpdateFormComponent } from './update-form/update-form.component';
 const routes: Routes = [
   { path: "", redirectTo:"/registration", pathMatch:"full"},
   { path: "registration", component: RegistrationFormComponent},
-  { path: "update/:index", component: UpdateFormComponent},
+  { path: "registration/:index", component: RegistrationFormComponent},
   { path: "details", component: DetailsComponent},
   { path: "**", component: PageNotFoundComponent}
 ];

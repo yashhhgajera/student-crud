@@ -24,7 +24,7 @@ export class DetailsComponent implements OnInit {
   }
 
   updateData(index:number){
-    this.router.navigate(["/update",index]);
+    this.router.navigate(["/registration",index]);
   }
 
 }
