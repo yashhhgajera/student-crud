@@ -27,4 +27,8 @@ export class DetailsComponent implements OnInit {
     this.router.navigate(["/registration",index]);
   }
 
+  hiddenPassword(i:any){
+    return '*'.repeat(this.studentData[i].password.length);
+  }
+
 }

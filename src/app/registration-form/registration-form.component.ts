@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, NgModel } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { DataService } from '../data.service';
 
@@ -14,10 +14,11 @@ export class RegistrationFormComponent implements OnInit {
   password:string = "";
   address:string = "";
   city:string = "";
-  state:number = 0;
+  state:number | undefined;
   zipcode:string = "";
   updateId:any = null;
   studentData:any = [];
+  isValid:boolean = false;
 
   constructor(private route:ActivatedRoute, private data: DataService, private router: Router) { }
 
@@ -40,6 +41,7 @@ export class RegistrationFormComponent implements OnInit {
   }
 
   addStudentData(formValue: NgForm){
+    this.isValid = false;
     if(formValue.valid!=false){
       if(this.updateId){
         this.studentData.splice(this.updateId,1,formValue.value);
@@ -53,11 +55,12 @@ export class RegistrationFormComponent implements OnInit {
       this.resetForm(formValue);
     }
     else{
-      alert("Fill the Value");
+      this.isValid=true;
     }
   }
 
   resetForm(formValue: NgForm){
+    this.isValid = false;
     formValue.reset();
   }
 }

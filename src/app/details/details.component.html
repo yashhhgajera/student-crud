@@ -15,7 +15,7 @@
       <tr *ngFor="let student of studentData, index as i" [ngSwitch]="student.state">
         <th scope="row">{{i+1}}</th>
         <td>{{student.email}}</td>
-        <td>{{student.password}}</td>
+        <td>{{hiddenPassword(i)}}</td>
         <td>{{student.address}}</td>
         <td>{{student.city}}</td>
         
