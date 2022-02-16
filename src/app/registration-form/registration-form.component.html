@@ -2,12 +2,22 @@
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">Email</label>
       <input type="email" class="form-control" id="inputEmail4" [(ngModel)]="email" name="email" aria-describedby="emailHelp" [class.is-invalid]="isValid && isEmail.invalid" #isEmail="ngModel" email required>
-      <div *ngIf="isValid && isEmail.invalid" class="invalid-feedback">Enter valid email</div>
+      <div *ngIf="isValid && isEmail.errors?.['required']" class="invalid-feedback">
+        Enter email
+      </div>
+      <div *ngIf="isValid && isEmail.errors?.['email']" class="invalid-feedback">
+        Enter valid email
+      </div>
     </div>
     <div class="col-md-6">
       <label for="inputPassword4" class="form-label">Password</label>
-      <input type="password" class="form-control" id="inputPassword4" [(ngModel)]="password" name="password" [class.is-invalid]="isValid && isPassword.invalid" #isPassword="ngModel" required>
-      <div *ngIf="isValid && isPassword.invalid" class="invalid-feedback">Enter password</div>
+      <input type="password" class="form-control" id="inputPassword4" [(ngModel)]="password" name="password" [class.is-invalid]="isValid && isPassword.invalid" #isPassword="ngModel" minlength="8" required>
+      <div *ngIf="isValid && isPassword.errors?.['required']" class="invalid-feedback">
+        Enter password
+      </div>
+      <div *ngIf="isValid && isPassword.errors?.['minlength']" class="invalid-feedback">
+        Password must be at least 8 characters long.
+      </div>
     </div>
     <div class="col-12">
       <label for="inputAddress" class="form-label">Address</label>
@@ -22,7 +32,6 @@
     <div class="col-md-4">
       <label for="inputState" class="form-label">State</label>
       <select id="inputState" class="form-select" [(ngModel)]="state" name="state" [class.is-invalid]="isValid && isState.invalid" #isState="ngModel" required>
-        <option value=0 disabled>Select State</option>
         <option value=1>Gujarat</option>
         <option value=2>Panjab</option>
         <option value=3>Haryana</option>

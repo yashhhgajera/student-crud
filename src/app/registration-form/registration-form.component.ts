@@ -42,7 +42,7 @@ export class RegistrationFormComponent implements OnInit {
 
   addStudentData(formValue: NgForm){
     this.isValid = false;
-    if(formValue.valid!=false){
+    if(formValue.valid){
       if(this.updateId){
         this.studentData.splice(this.updateId,1,formValue.value);
         localStorage.setItem("studentdata",JSON.stringify(this.studentData));

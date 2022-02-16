@@ -17,6 +17,7 @@ import { DataService } from './data.service';
     PageNotFoundComponent,
     DetailsComponent,
     UpdateFormComponent
+    
   ],
   imports: [
     BrowserModule,

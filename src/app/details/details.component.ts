@@ -11,7 +11,7 @@ export class DetailsComponent implements OnInit {
   
   studentData:any = [];
 
-  constructor(private router:Router, private data: DataService) { }
+  constructor(private router:Router, private data: DataService ) { }
 
   ngOnInit(): void {
     this.studentData = this.data.getData();
@@ -30,5 +30,7 @@ export class DetailsComponent implements OnInit {
   hiddenPassword(i:any){
     return '*'.repeat(this.studentData[i].password.length);
   }
+
+
 
 }
